@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>udp</name>
+  <version>0.1.0</version>
+  <description>Exchange robot positions between two ROS robots over UDP.</description>
+  <maintainer email="robit@todo.todo">robit</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>humanoid_interfaces</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
