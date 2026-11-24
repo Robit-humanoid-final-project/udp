@@ -1,0 +1,5 @@
+udp_node:
+  ros__parameters:
+    peer_ip: "127.0.0.1"  # 상대 NUC의 IPv4 주소. 한 대 테스트는 자기 주소 사용
+    local_port: 5100      # 이 NUC가 수신할 포트
+    peer_port: 5100       # 상대 NUC가 수신할 포트
