@@ -5,7 +5,12 @@ find_package(rclcpp REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(humanoid_interfaces REQUIRED)
-add_executable(udp_node src/udp_sender.cpp src/udp_receiver.cpp)
+add_executable(udp_node
+  src/main.cpp
+  src/udp_node.cpp
+  src/udp_sender.cpp
+  src/udp_receiver.cpp
+)
 target_compile_features(udp_node PRIVATE cxx_std_17)
 ament_target_dependencies(udp_node rclcpp ament_index_cpp geometry_msgs humanoid_interfaces)
 install(TARGETS udp_node DESTINATION lib/${PROJECT_NAME})
