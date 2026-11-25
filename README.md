@@ -17,6 +17,29 @@
 | `src/udp_sender.cpp` | 내 팀 데이터를 문자열로 변환해 상대에게 송신|
 | `src/udp_receiver.cpp` | 상대 패킷을 확인하고 팀 메시지로 복원해 수신 |
 
+
+## YAML파일 준비 
+
+udp.yaml 파일은 .gitignore에 등록되어 있기 때문에 config/udp.yaml은 장치별로 관리한다.
+
+각 로봇은 IP가 다르고 또한 매번 달라지기 때문에 이와 같이 관리한다.
+
+새로 git clone한 경우, 첫 빌드 전에 udp 패키지 안에 config 폴더를 만들고 udp.yaml을 작성한다. 
+
+yaml파일 형식은 다음과 같다.
+
+```yaml
+udp_node:
+  ros__parameters:
+    peer_ip: "127.0.0.1"
+    local_port: 5100
+    peer_port: 5100
+```
+
+한 컴퓨터에서 테스트할 때는 위 설정을 그대로 사용한다.
+
+두 로봇이 통신할 때는 각 로봇의 peer_ip에 상대 로봇의 Wi-Fi IP를 입력한다. peer_port는 상대 로봇의 local_port와 맞춘다.
+
 ## 빌드 및 실행 
 
 각 NUC의 `~/colcon_ws/src`에 `udp`와 `TeamData.msg`가 포함된 `humanoid_interfaces` 패키지가 있어야 한다.
@@ -27,20 +50,6 @@ source /opt/ros/jazzy/setup.bash &&
 colcon build --packages-up-to udp &&
 source ~/colcon_ws/install/setup.bash &&
 ros2 run udp udp_node
-```
-
-## yaml
-
-yaml파일에서 ip와 port를 관리할 수 있도록 하였다.
-
-
-```yaml
-# 예시
-udp_node:
-  ros__parameters:
-    peer_ip: "127.0.0.1"
-    local_port: 5100
-    peer_port: 5100
 ```
 
 ## 컴퓨터 한대에서 테스트
